@@ -1,0 +1,204 @@
+@use 'variables' as *;
+@use 'functions' as *;
+@use 'mixins' as *;
+
+// For using these variables in jsx
+:root {
+  /* ------Text 1.2 ratio------ */
+  --heading-title: #{$heading-title};
+  --heading-h1: #{$heading-h1};
+  --heading-h2: #{$heading-h2};
+  --heading-h3: #{$heading-h3};
+  --heading-h4: #{$heading-h4};
+  --heading-h5: #{$heading-h5};
+  --heading-h6: #{$heading-h6};
+  --heading-base: #{$heading-base};
+
+  --paragraph-p1: #{$paragraph-p1};
+  --paragraph-p2: #{$paragraph-p2};
+  --paragraph-small: #{$paragraph-small};
+  --paragraph-numbers: #{$paragraph-numbers};
+  --paragraph-stats: #{$paragraph-stats};
+
+  /* ------Colours------ */
+  /* Neutral */
+  --swed-black-100: #{$swed-black-100};
+  --swed-black-75: #{$swed-black-75};
+  --swed-black-50: #{$swed-black-50};
+  --swed-black-25: #{$swed-black-25};
+  --swed-black-10: #{$swed-black-10};
+  --swed-black-5: #{$swed-black-5};
+  --white: #{$white};
+
+  /* Main */
+  --vcn-red: #{$vcn-red};
+  --vcn-blue: #{$vcn-blue};
+  --swed-yellow: #{$swed-yellow};
+  --swed-blue: #{$swed-blue};
+  --bright-blue: #{$bright-blue};
+  --accent-green: #{$accent-green};
+  --deep-red: #{$deep-red};
+  --brown: #{$brown};
+  --cyan: #{$cyan};
+  --darker-yellow: #{$darker-yellow};
+  --kharani-blue: #{$kharani-blue};
+  --light-blue: #{$light-blue};
+  --uber-light-blue: #{$uber-light-blue};
+  --kharani-yellow: #{$kharani-yellow};
+
+  /* Button colors */
+  --primary-button-color: #{$swed-yellow};
+  --secondary-button-color: #{$bright-blue};
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $font-paragraph;
+  font-size: 15px;
+}
+
+/* Text styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-heading;
+  color: $swed-black-100;
+}
+
+h1 {
+  font-size: $heading-h1;
+}
+
+h2 {
+  font-size: $heading-h2;
+}
+
+h3 {
+  font-size: $heading-h3;
+}
+
+h4 {
+  font-size: $heading-h4;
+}
+
+h5 {
+  font-size: $heading-h5;
+}
+
+h6 {
+  font-size: $heading-h6;
+  line-height: 180%;
+}
+
+.h7 {
+  font-family: $font-heading;
+  font-size: $heading-base;
+  line-height: 200%;
+  font-weight: bold;
+  color: $swed-black-100;
+}
+
+.title {
+  font-size: $heading-title;
+  font-weight: bold;
+  color: $swed-black-100;
+}
+
+.paragraph1 {
+  font-family: $font-paragraph;
+  font-size: $paragraph-p1;
+  line-height: 155%;
+  font-weight: paraWeight(regular);
+  color: $swed-black-75;
+}
+
+.paragraph2 {
+  font-family: $font-paragraph;
+  font-size: $paragraph-p2;
+  line-height: 155%;
+  font-weight: paraWeight(light);
+  color: $swed-black-75;
+}
+
+.small {
+  font-family: $font-paragraph;
+  font-size: $paragraph-small;
+  line-height: 172%;
+  font-weight: lighter;
+  color: $swed-black-75;
+}
+
+.header-text {
+  font-family: $font-paragraph !important;
+  font-size: $paragraph-small !important;
+  line-height: 200%;
+  font-weight: bold !important;
+  color: $swed-black-100;
+}
+
+.numbers {
+  font-family: $font-paragraph;
+  font-size: $paragraph-numbers;
+  line-height: 200%;
+  font-weight: bold;
+  color: $swed-black-100;
+}
+
+.stats {
+  font-family: $font-paragraph;
+  font-size: $paragraph-stats;
+  line-height: 194%;
+  font-weight: normal;
+  color: $swed-black-100;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.medium {
+  font-weight: 500;
+}
+
+// -----------color utility classes----------------
+
+.black-text-100 {
+  color: $swed-black-100 !important;
+}
+
+.white-text {
+  color: $white !important;
+}
+
+.vcn-red-text {
+  color: $vcn-red !important;
+}
+// ------------buttons------------------
+
+%button {
+  font-family: $font-heading;
+  font-size: $heading-h6;
+  line-height: 200%;
+  font-weight: bold;
+  padding: 8px 24px;
+  color: $white;
+  background-color: $primary-button-color;
+  box-shadow: 0 4px 4px hsl(0, 0%, 0%, 25%);
+  border: none;  
+}
+
+.primary-button {
+  @extend %button;
+  background-color: $primary-button-color;
+}
+
+
+

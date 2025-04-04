@@ -1,0 +1,6 @@
+@use 'variables' as *;
+@use 'sass:map';
+
+@function paraWeight($weight-name) {
+  @return map.get($paragraph-font-weights, $weight-name);
+}

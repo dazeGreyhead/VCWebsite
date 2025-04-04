@@ -1,0 +1,31 @@
+@use '../scss/variables' as *;
+@use '../scss/mixins' as *;
+
+header {
+  z-index: 10;
+  height: 90px;
+  width: 100%;
+  @include flexCenter;
+  /* border-bottom: 1px solid var(--swed-black-10); */
+  position: fixed;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 92%;
+  max-width: 1760px;
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  gap: 56px;
+  height: 100%;
+}
+
+li {
+  @include flexCenter;
+  color: $white;
+}

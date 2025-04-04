@@ -1,0 +1,55 @@
+/* ------Text 1.2 ratio------ */
+$heading-title: 3.6rem;
+$heading-h1: 3rem;
+$heading-h2: 2.5rem;
+$heading-h3: 2rem;
+$heading-h4: 1.7rem;
+$heading-h5: 1.4rem;
+$heading-h6: 1.2rem;
+$heading-base: 1rem;
+
+$paragraph-p1: 1.3rem;
+$paragraph-p2: 1.13rem;
+$paragraph-small: 0.9rem;
+$paragraph-numbers: 2.2rem;
+$paragraph-stats: 1.13rem;
+
+$paragraph-font-weights: (
+  'regular': 300,
+  'light': 200,
+);
+
+$font-heading: var(--font-heading);
+$font-paragraph: var(--font-paragraph);
+
+/* ------Colours------ */
+/* Neutral */
+$swed-black-100: #1B1B19;
+$swed-black-75: #5C5A53;
+$swed-black-50: #989791;
+$swed-black-25: #C6C4BC;
+$swed-black-10: #EBEAE4;
+$swed-black-5: #F5F5F3;
+$white: white;
+
+/* Main */
+$vcn-red: #DC143C;
+$vcn-blue: #003893;
+$swed-yellow: #FECC02;
+$swed-blue: #006AA7;
+$bright-blue: #1496DC;
+$accent-green: #10AD15;
+$deep-red: #A8193A;
+$brown: #6A0404;
+$cyan: #45A2C9;
+$darker-yellow: #E5B701;
+$kharani-blue: #DFEFF9;
+$light-blue: #E9F7FF;
+$uber-light-blue: #F3F9FC;
+$kharani-yellow: #F9F0C7;
+
+/* Button colors */
+$primary-button-color: $swed-yellow;
+$secondary-button-color: $bright-blue;
+
+
