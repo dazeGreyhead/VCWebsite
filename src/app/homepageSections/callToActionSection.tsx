@@ -1,25 +1,24 @@
-import Image from "next/image";
+"use client";
+
 import "./ctaStyles.scss";
 import SocialMediaLinks from "../components/socialMediaLinks";
+import HeroContent from "../components/heroContent";
+import PlayButton from "../components/playButton";
+import { useState } from "react";
 
 export default function CallToActionSection() {
   const ctaTitle = "Jajarkot Needs Your Help!";
   const words = ctaTitle.split(" ");
+  const [playHeroVideo, setPlayHeroVideo] = useState(false);
+
+  function handlePlayHeroVideo() {
+    setPlayHeroVideo(!playHeroVideo);
+  }
 
   return (
     <section className="hero-section">
       <figure className="hero-content-container hero-content-container-mask">
-        <video className="hero-content" loop autoPlay controls>
-          <source src="/FEB27.mp4" type="video/mp4" />
-          Is this working?
-        </video>
-        {/* <Image
-          src="/Main-Content-Placeholder.jpg"
-          width={1600}
-          height={1200}
-          alt="Hero Image"
-          className="hero-content"
-        /> */}
+        <HeroContent className="hero-content" playVideo={playHeroVideo} />
       </figure>
       <div className="hero-overlay">
         <div className="call-to-action">
@@ -40,15 +39,14 @@ export default function CallToActionSection() {
             color="var(--white)"
             size="1.31rem"
             showEmailIcon={false}
-            className="social-media-links"
+            className="cta-social-media-links"
           />
         </div>
         <figure className="hero-play-button">
-          <Image
-            src="/Play-button-img.svg"
-            width={173}
-            height={173}
-            alt="Play button"
+          <PlayButton
+            className="play-button"
+            playVideo={playHeroVideo}
+            onClick={handlePlayHeroVideo}
           />
         </figure>
       </div>

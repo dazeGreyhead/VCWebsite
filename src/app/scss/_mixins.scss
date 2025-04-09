@@ -1,5 +1,11 @@
-@mixin flexCenter {
+@mixin flexCenter($direction) {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: $direction;
+}
+
+@mixin hw100Pcent {
+  height: 100%;
+  width: 100%;
 }

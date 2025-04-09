@@ -1,0 +1,181 @@
+@use '../../scss/variables' as *;
+@use '../../scss/mixins' as *;
+@use '../../scss/globals.scss' as *;
+
+// ---------------------Header Stuffs-------------------
+
+.header-container {
+  position: fixed;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+}
+
+header {
+  position: relative;
+  z-index: 12;
+  pointer-events: auto;
+  height: 90px;
+  width: 100%;
+  @include flexCenter(row);
+  border-bottom: 1px solid transparent;
+  @extend .header-text;
+  color: $white;
+  background-color: transparent;
+  transition-property: border-bottom, background-color, color;
+  transition-duration: 1s, 1s, 1s;
+  transition-timing-function: ease-in-out;
+  &.solid {
+    border-bottom-color: $swed-black-10;
+    background-color: $white;
+    transition-property: border-bottom, background-color, color;
+    transition-duration: 1s, 1s, 1s;
+    color: $swed-black-100;
+    transition-timing-function: ease-in-out;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 92%;
+  max-width: 1760px;
+  height: 100%;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  gap: 56px;
+  height: 100%;
+}
+
+li {
+  @include flexCenter(row);
+}
+
+// ----------------Sidebar Stuffs----------------
+.sidebar-container {
+  position: relative;
+  z-index: 11;
+  width: 100%;
+  flex-grow: 1;
+  background-color: rgba(0, 0, 0, 0.219);
+}
+
+.sidebar-nav-level-0 {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 48px;
+  padding-right: 48px;
+  border-right: 1px solid $swed-black-10;
+  top: 0;
+  left: 0;
+  width: max-content;
+  height: 100%;
+  background-color: $white;
+  color: $swed-black-100;
+  gap: 80px;
+}
+
+
+.motion-wrapper-div {
+  position: absolute;
+  z-Index: -1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
+.sidebar-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.sidebar-nav-inner-level {
+  @extend .sidebar-nav-level-0;
+  width: max-content;
+  min-width: 150px;
+  border-left: 1px solid $swed-black-10;
+  padding-right: 80px;
+  
+  position: absolute;
+  background-color: $white;
+}
+
+
+.sidebar-items-style {
+  color: $swed-black-50;
+  cursor: pointer;
+
+  &:hover, &:active {
+    color: $swed-black-100;
+  }
+}
+
+.sidebar-social-media-links {
+text-decoration: none;
+  @include flexCenter(row);
+}
+
+.social-media-links-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap:16px;
+  width: 122px;
+  height: 76px;
+}
+
+.fade-in-sidebar {
+  animation: fade-in 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+.fade-out-sidebar {
+  animation: fade-out 1s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.sidebar-title-line {
+  background-color: $swed-blue;
+  width: 100px;
+  height: 8px;
+}
+
+.sidebar-links {
+  text-decoration: none;
+}
+
+

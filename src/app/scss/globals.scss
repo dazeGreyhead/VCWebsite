@@ -63,42 +63,43 @@ html {
 }
 
 /* Text styles */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+:where(.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6) {
   font-family: $font-heading;
   color: $swed-black-100;
 }
 
-h1 {
+.h1 {
   font-size: $heading-h1;
 }
 
-h2 {
+.h2 {
   font-size: $heading-h2;
 }
 
-h3 {
+.h3 {
   font-size: $heading-h3;
 }
 
-h4 {
+.h4 {
   font-size: $heading-h4;
 }
 
-h5 {
+.h5 {
   font-size: $heading-h5;
 }
 
-h6 {
+:where(.h6) {
   font-size: $heading-h6;
+  font-weight: bold;
   line-height: 180%;
 }
 
-.h7 {
+:where(.h7) {
   font-family: $font-heading;
   font-size: $heading-base;
   line-height: 200%;
@@ -200,5 +201,9 @@ h6 {
   background-color: $primary-button-color;
 }
 
-
+.play-button {
+  cursor: pointer;
+  fill: $swed-yellow;
+  opacity: 0.75;
+}
 
