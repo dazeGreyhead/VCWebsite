@@ -1,5 +1,6 @@
 import React from "react";
 import SidebarCard from "./sidebarCard";
+import { AnimatePresence } from "motion/react";
 
 export type SidebarLinksType = {
   label?: string;
@@ -122,5 +123,5 @@ const sidebarLinks: SidebarLinksType[] = [
 ];
 
 export default function SidebarNav() {
-  return <SidebarCard menuItems={sidebarLinks} />;
+  return <SidebarCard key={"Main Card"} menuItems={sidebarLinks} />;
 }

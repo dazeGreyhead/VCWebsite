@@ -60,10 +60,10 @@ li {
 // ----------------Sidebar Stuffs----------------
 .sidebar-container {
   position: relative;
-  z-index: 11;
-  width: 100%;
-  flex-grow: 1;
-  background-color: rgba(0, 0, 0, 0.219);
+  z-index: 5;
+  width: fit-content;
+  height: 100%;
+
 }
 
 .sidebar-nav-level-0 {
@@ -75,8 +75,6 @@ li {
   padding-left: 48px;
   padding-right: 48px;
   border-right: 1px solid $swed-black-10;
-  top: 0;
-  left: 0;
   width: max-content;
   height: 100%;
   background-color: $white;
@@ -85,30 +83,23 @@ li {
 }
 
 
-.motion-wrapper-div {
-  position: absolute;
-  z-Index: -1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-
-}
-
 .sidebar-menu-items {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 40px;
 }
 
 .sidebar-nav-inner-level {
   @extend .sidebar-nav-level-0;
   width: max-content;
-  min-width: 150px;
+  min-width: 250px;
   border-left: 1px solid $swed-black-10;
   padding-right: 80px;
   
   position: absolute;
+  top: 0;
+
+  // background-color: rgba(179, 47, 47, 0.452);
   background-color: $white;
 }
 
@@ -174,8 +165,21 @@ text-decoration: none;
   height: 8px;
 }
 
+.sidebar-title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .sidebar-links {
   text-decoration: none;
 }
 
+.motion-container {
+  position: absolute;
+  top: 0;
+  width: max-content;
+  height: 100%;
+  z-index: -1;
+}
 
