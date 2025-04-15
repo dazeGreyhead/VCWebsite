@@ -1,124 +1,125 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import SocialMediaLinks from "../socialMediaLinks";
-import { SidebarLinksType } from "./sidebarNav";
+import { SidebarCardDataType, SidebarLinksType } from "./sidebarNav";
 import Link from "next/link";
-import { motion, AnimatePresence } from "motion/react";
-import { easeInOut } from "motion";
-import useOutsideClick from "@/app/utils/useOutsideClick";
 
-type SidebarCardProps = {
-  menuItems: SidebarLinksType[];
-  level?: number;
-  parentWidth?: number;
-};
+import { motion } from "motion/react";
 
+interface SidebarCardProps {
+  sidebarCardIndex: number;
+  menuItems: SidebarCardDataType;
+  setRenderedSidebarCards: React.Dispatch<
+    React.SetStateAction<SidebarCardDataType[]>
+  >;
+  setBufferedSidebarCardItems: React.Dispatch<
+    React.SetStateAction<SidebarCardDataType | null>
+  >;
+  setSidebarCardsToRemove: React.Dispatch<React.SetStateAction<number>>;
+  renderedSidebarCards: SidebarCardDataType[];
+}
+
+// This renders the sidebar menu card based on what data it recieves.
 export default function SidebarCard({
+  sidebarCardIndex,
   menuItems,
-  level = 0,
-  parentWidth = 0,
+  renderedSidebarCards,
+  setRenderedSidebarCards,
+  setBufferedSidebarCardItems,
+  setSidebarCardsToRemove,
 }: SidebarCardProps) {
-  const [openSubMenu, setOpenSubmenu] = useState<number | null>(null); // stores index of the submenu that should be open.
-  const [bufferOpenIndex, setBufferOpenIndex] = useState<number | null>(null);
+  const [activeMenu, setActiveMenu] = useState(""); // State for showing which menu item's submenu is open.
 
-  const componentRef = useRef<HTMLDivElement>(null);
-  const [componentWidth, setcomponentWidth] = useState(0); // component width to be passed down to child as parentwidth
+  // Toggles opening and closing of submenu.
+  function toggleSubMenu(label: string, subMenu: SidebarLinksType[]) {
+    // Check if we're toggling an already open submenu
+    const isTogglingOpenSubmenu =
+      renderedSidebarCards.length > sidebarCardIndex + 1; // submenu is open
 
-  function openMenuToggle(index: number) {
-    if (openSubMenu !== null) {
-      // if there is already an open submenu.
-      if (openSubMenu === index) {
-        // if the submenu we are trying to open is already open, close it.
-        setOpenSubmenu(null);
+    if (isTogglingOpenSubmenu) {
+      if (renderedSidebarCards[sidebarCardIndex + 1].label === label) {
+        // open submenu is the same as the one we are trying to open
+        setActiveMenu("");
+        setSidebarCardsToRemove(
+          // How any nested submenus we need to close.
+          renderedSidebarCards.length - sidebarCardIndex - 2
+        ); // minus 2 because we already remove 1 sidebar in this function.
+        setRenderedSidebarCards((prev) => prev.slice(0, -1)); // Only remove one because subsequent will be removed when the exit animations of the sidecards end.
       } else {
-        // if the we are trying to open a different menu, buffer it so it opens after exit animation of previous submenu.
-        setOpenSubmenu(null);
-        setBufferOpenIndex(index);
+        // we are trying to open a different submenu
+        setSidebarCardsToRemove(
+          renderedSidebarCards.length - sidebarCardIndex - 2
+        ); // minus 2 because we already remove 1 sidebar in this function.
+        setRenderedSidebarCards((prev) => prev.slice(0, -1));
+        setActiveMenu(label);
+        setBufferedSidebarCardItems({
+          // Dont immediately put this menu in the stack but hold it to add when the exit animation of the previously open submenu ends
+          label: label,
+          sidebarCardData: subMenu,
+        });
       }
     } else {
-      // if no submenu is open, open one.
-      setOpenSubmenu(index);
+      // There is no submenu open. Just open one.
+      setActiveMenu(label);
+      setRenderedSidebarCards((prev) => [
+        ...prev,
+        { label: label, sidebarCardData: subMenu },
+      ]);
     }
   }
-
-  function openBufferedMenu() {
-    if (bufferOpenIndex != null) {
-      setOpenSubmenu(bufferOpenIndex);
-      setBufferOpenIndex(null);
-    }
-  }
-
-  useOutsideClick(componentRef, () => setOpenSubmenu(null));
-
-  useEffect(() => {
-    if (componentRef && componentRef.current) {
-      setcomponentWidth(componentRef.current?.offsetWidth);
-    }
-  }, []);
 
   return (
     <motion.div
-      initial={{
-        left: parentWidth - 1,
-        x: "-100%",
-      }}
-      animate={{
-        left: parentWidth - 1,
-        x: "0",
-      }}
-      exit={{
-        left: parentWidth - 1,
-        x: "-100%",
-      }}
-      transition={{
-        ease: easeInOut,
-        duration: 0.5,
-      }}
-      ref={componentRef}
       className={
-        level === 0 ? "sidebar-nav-level-0" : "sidebar-nav-inner-level"
+        sidebarCardIndex === 0
+          ? "sidebar-nav-level-0"
+          : "sidebar-nav-inner-level"
       }
-      style={{ zIndex: -level }}
+      style={{ zIndex: 10 - sidebarCardIndex }} // This is to ensure the open submenus animate from behind the menus that open them.
+      initial={{ x: "-100%" }}
+      animate={{ x: "-2px" }} // To compensate the border sizes.
+      exit={{ x: "-100%" }}
+      transition={{
+        duration: 0.15,
+        ease: "easeInOut",
+      }}
     >
       <div className="sidebar-menu-items">
-        {menuItems.map((item, index) => {
+        {menuItems.sidebarCardData.map((item, index) => {
           return (
-            <div key={`menu-item-${level}-${index}`}>
+            <div
+              className={`intermediate-div `}
+              key={`menu-item-${sidebarCardIndex}-${index}`}
+            >
               {item.title && (
                 <div className="sidebar-title-container">
                   <h5 className="h5 swed-yellow">{item.title}</h5>
                   <div className="sidebar-title-line"></div>
                 </div>
               )}
+
               {item.children ? (
-                <>
-                  <div
-                    className={
-                      level === 0
-                        ? "h7 sidebar-items-style"
-                        : "h6 sidebar-items-style"
-                    }
-                    onClick={() => openMenuToggle(index)}
-                  >
-                    {item.label}
-                  </div>
-                  <AnimatePresence onExitComplete={() => openBufferedMenu()}>
-                    {openSubMenu === index && (
-                      <SidebarCard
-                        menuItems={item.children}
-                        level={level + 1}
-                        parentWidth={componentWidth}
-                      />
-                    )}
-                  </AnimatePresence>
-                </>
+                <div
+                  className={
+                    sidebarCardIndex === 0
+                      ? `h7 sidebar-items-style ${
+                          activeMenu === item.label ? "active" : ""
+                        }`
+                      : `h6 sidebar-items-style ${
+                          activeMenu === item.label ? "active" : ""
+                        }`
+                  }
+                  onClick={() => toggleSubMenu(item.label!, item.children!)}
+                >
+                  {item.label}
+                </div>
               ) : (
                 item.link && (
                   <Link href={item.link} className="sidebar-links">
                     <div
                       className={
-                        level === 0
+                        sidebarCardIndex === 0
                           ? "h7 sidebar-items-style"
                           : "h6 sidebar-items-style"
                       }
@@ -132,8 +133,7 @@ export default function SidebarCard({
           );
         })}
       </div>
-
-      {level === 0 && (
+      {sidebarCardIndex === 0 && (
         <div className="social-media-links-container">
           <SocialMediaLinks
             color="var(--swed-black-100)"

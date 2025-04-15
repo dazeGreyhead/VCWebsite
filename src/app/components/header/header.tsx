@@ -55,13 +55,8 @@ export default function Header() {
             </div>
           </nav>
         </header>
-        <div
-          className={`sidebar-container ${
-            openSidebarNav ? "fade-in-sidebar" : "fade-out-sidebar"
-          }`}
-        >
-          <SidebarNav />
-        </div>
+
+        {openSidebarNav && <SidebarNav openSidebarNav={openSidebarNav} />}
       </div>
     </>
   );
