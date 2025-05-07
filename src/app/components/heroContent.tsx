@@ -77,7 +77,6 @@ export default function HeroContent({
           loop
         >
           <source src="/FEB27.mp4" type="video/mp4" />
-          Is this working?
         </video>
       </div>
     </>

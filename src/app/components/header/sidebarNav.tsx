@@ -34,19 +34,32 @@ export default function SidebarNav({ openSidebarNav }: SidebarNavProps) {
   // This is for sequentially removing the sidebar cards. When the top level sidebar card animates out, it tells if there are more to be removed.
   const [sidebarCardsToRemove, setSidebarCardsToRemove] = useState(0);
 
-  // // Handles sequential removal of outside card when user clicks outside of the sidebar container.
-  // useOutsideClick(componentRef, () => {
-  //   setSidebarCardsToRemove(renderedSidebarCards.length - 1); // Sets how many sidebarcards must be removed. -1 because we remove one in the following line.
-  //   setRenderedSidebarCards((prev) => prev.slice(0, -1)); // Removes one sidecard at the top of the stack, in other words, end of the array.
-  //   // Other ones to be removed will be sequentially be removed on the exit animation of the previously removed sidebar card.
-  // });
+  // Handles sequential removal of outside card when user clicks outside of the sidebar container.
+  useOutsideClick(componentRef, () => {
+    setSidebarCardsToRemove(renderedSidebarCards.length - 2); // Sets how many sidebarcards must be removed. -2 because we only want to remove till the main sidebar menu.
+    setRenderedSidebarCards((prev) => {
+      if (prev.length > 1) {
+        // Dont remove the main sidebar menu.
+        return prev.slice(0, -1);
+      } else {
+        return prev;
+      }
+    }); // Removes one sidecard at the top of the stack, in other words, end of the array.
+    // Other ones to be removed will be sequentially be removed on the exit animation of the previously removed sidebar card.
+  });
 
   // Function that is fired when the animation of the removal of a sidecard ends. Basically another sidecard is added or removed only after the previous sidecard
   // completely animates out.
   function changeTheSidecards() {
     if (sidebarCardsToRemove > 0) {
       // If there are sidecards left to remove
-      setRenderedSidebarCards((prev) => prev.slice(0, -1)); // remove one at a time. If there is more left to remove, this will run again when the animation of the
+      setRenderedSidebarCards((prev) => {
+        if (prev.length > 1) {
+          return prev.slice(0, -1);
+        } else {
+          return prev;
+        }
+      }); // remove one at a time. If there is more left to remove, this will run again when the animation of the
       // currently removed sidecard ends.
       setSidebarCardsToRemove((prev) => prev - 1); // One sidebar card removed.
     } else if (bufferedSidebarCardItems) {
@@ -60,7 +73,7 @@ export default function SidebarNav({ openSidebarNav }: SidebarNavProps) {
   }
 
   return (
-    <div className="sidebar-container" ref={componentRef}>
+    <div className="sidebar-cards-container" ref={componentRef}>
       <AnimatePresence onExitComplete={() => changeTheSidecards()}>
         {/* This checks the addition and removal of sidecards and fires the previously defined funciton when a sidecard animates out. */}
         {renderedSidebarCards.map((sidecard, index) => (

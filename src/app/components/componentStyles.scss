@@ -21,8 +21,6 @@
 }
 }
 
-
-
 .slider-video-container {
   @include hw100Pcent;
   overflow: hidden;
@@ -43,4 +41,43 @@
     z-index: 1;
     opacity: 1;
   }
+}
+
+// ------------------Content and Text side by side sections style.----------------------
+.catsbs-container {
+  display: flex;
+  justify-content: center;
+  gap: 96px;
+  width: 80%;
+  height: 470px;
+}
+
+.catsbs-content-container {
+  width: 55%;
+}
+
+.catsbs-content {
+  
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.catsbs-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 45%;
+
+}
+
+.catsbs-paragraph-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 64px;
+}
+
+.catsbs-paragraph-container p {
+  margin-bottom: 24px;
 }

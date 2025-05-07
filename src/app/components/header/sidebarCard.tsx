@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 import SocialMediaLinks from "../socialMediaLinks";
-import { SidebarCardDataType, SidebarLinksType } from "./sidebarNav";
+import { SidebarCardDataType, SidebarLinksType } from "@/app/utils/types";
 import Link from "next/link";
 
 import { motion } from "motion/react";
+import TitleLine from "../TitleLine";
 
 interface SidebarCardProps {
   sidebarCardIndex: number;
@@ -81,7 +82,7 @@ export default function SidebarCard({
       animate={{ x: "-2px" }} // To compensate the border sizes.
       exit={{ x: "-100%" }}
       transition={{
-        duration: 0.15,
+        duration: 0.3,
         ease: "easeInOut",
       }}
     >
@@ -95,7 +96,7 @@ export default function SidebarCard({
               {item.title && (
                 <div className="sidebar-title-container">
                   <h5 className="h5 swed-yellow">{item.title}</h5>
-                  <div className="sidebar-title-line"></div>
+                  <TitleLine color="swed-blue" />
                 </div>
               )}
 

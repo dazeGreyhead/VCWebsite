@@ -5,6 +5,10 @@
 .hero-section {
   width: 100%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 80px;
 }
 
 .hero-content-container {
@@ -12,14 +16,11 @@
   height: 113vh;
 
   &-mask {
-  mask-image: url("../../../public/Destructed-Background.svg");
+  mask-image: url("../../../public/svg/Destructed-Background.svg");
   mask-repeat: no-repeat;
   mask-position: bottom;
   mask-size: 125%;
-
   }
-  
-  
 }
 
 .hero-image-container {
@@ -77,4 +78,44 @@
 .cta-social-media-links {
   text-decoration: none;
   @include flexCenter(row);
+}
+
+.cta-catsbs-container {
+  position: relative;
+  height: 620px;
+  width: 100%;
+  display: flex;
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cta-catsbs-background {
+  position: absolute;
+  z-index: -1;
+  width: 125%;
+  height: 100%;
+  fill: $kharani-yellow;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.vcn-programmatic-approaches-container {
+  width: 80%;
+}
+
+.programmatic-approaches-diagram {
+  width: 95%;
+  height: 95%;
+  margin-top: -30px;
+  text-align: center;
+}
+
+.programmatic-approaches-diagram-container {
+  @include flexCenter(column);
 }

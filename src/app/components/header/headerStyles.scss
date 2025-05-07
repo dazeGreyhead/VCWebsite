@@ -4,17 +4,8 @@
 
 // ---------------------Header Stuffs-------------------
 
-.header-container {
-  position: fixed;
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100vh;
-}
-
 header {
-  position: relative;
+  position: fixed;
   z-index: 12;
   height: 90px;
   width: 100%;
@@ -56,11 +47,19 @@ li {
 }
 
 // ----------------Sidebar Stuffs----------------
-.sidebar-container {
+.sidebar-cards-container {
   display: grid;
-    grid-auto-flow: column;
-    height: 100%;
-    width: max-content;
+  grid-auto-flow: column;
+  height: 100%;
+  width: max-content;
+}
+
+.sidebar-container {
+  position: fixed;
+  z-index: 10;
+  width: 100vw;
+  height: 100%;
+  background-color: hsla(0, 0%, 0%, 0.336);
 
 }
 
@@ -68,6 +67,7 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 80px;
     
   align-items: center;
   border-right: 1px solid $swed-black-10;
@@ -108,8 +108,13 @@ li {
   color: $swed-black-50;
   cursor: pointer;
 
-  &:hover, &:active {
+  &:hover {
+    color: $darker-yellow;
+    background-color: $swed-black-5;
+  }
+  &:active {
     color: $swed-black-100;
+    background-color: $swed-yellow;
   }
 }
 
@@ -125,12 +130,6 @@ text-decoration: none;
   gap:16px;
   width: 122px;
   height: 76px;
-}
-
-.sidebar-title-line {
-  background-color: $swed-blue;
-  width: 100px;
-  height: 8px;
 }
 
 .sidebar-title-container {
@@ -157,5 +156,10 @@ text-decoration: none;
 .active {
   color: $swed-black-100;
   background-color: $swed-yellow;
+
+  &:hover, &:active {
+    color: $swed-black-100;
+      background-color: $swed-yellow;
+  }
 }
 
