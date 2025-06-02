@@ -18,6 +18,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/flubber": "^0.4.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -31,5 +32,5 @@
       "no-console": "off",
       "no-unused-vars": "off"
     }
-}
+  }
 }

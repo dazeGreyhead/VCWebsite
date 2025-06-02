@@ -30,6 +30,9 @@ importers:
       '@eslint/eslintrc':
         specifier: ^3
         version: 3.3.1
+      '@types/flubber':
+        specifier: ^0.4.0
+        version: 0.4.0
       '@types/node':
         specifier: ^20
         version: 20.17.28
@@ -398,6 +401,9 @@ packages:
 
   '@types/estree@1.0.7':
     resolution: {integrity: sha512-w28IoSUCJpidD/TGviZwwMJckNESJZXFu7NBZ5YJ4mEUnNraUn9Pm8HSZm/jDF1pDWYKspWE7oVphigUPRakIQ==}
+
+  '@types/flubber@0.4.0':
+    resolution: {integrity: sha512-q9u6zseKgOBc0sAn/aPyi0vMNtXiLrNHSvj/tMXg+X2vk0jwX7obXgLISBmryGFvfszbId1JGT/8CcwB3vC6yg==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -1969,6 +1975,8 @@ snapshots:
     optional: true
 
   '@types/estree@1.0.7': {}
+
+  '@types/flubber@0.4.0': {}
 
   '@types/json-schema@7.0.15': {}
 
