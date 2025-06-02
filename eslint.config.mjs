@@ -13,13 +13,16 @@ const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
     rules: {
-      // Disable the 'no-unused-vars' rule completely.
-      // You can also use 'warn' for a warning instead of an error,
-      // or specify more granular options if needed.
-      "no-unused-vars": "off",
-
-      // Example of setting it to 'warn' with common exceptions:
-      // 'no-unused-vars': ['warn', { 'args': 'none', 'varsIgnorePattern': '^_', 'caughtErrors': 'none' }],
+      "no-unused-vars": [
+        "error",
+        {
+          vars: "all",
+          args: "after-used",
+          caughtErrors: "all",
+          ignoreRestSiblings: false,
+          reportUsedIgnorePattern: false,
+        },
+      ],
     },
   },
 ];
