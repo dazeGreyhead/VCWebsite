@@ -55,7 +55,26 @@ export default function CallToActionSection() {
         </div>
       </div>
       <div className="cta-catsbs-container">
-        <ContentAndTextSBS />
+        <ContentAndTextSBS
+          hasTitleLine={false}
+          contentType="image"
+          contentDirection="left"
+          src="/Jajarkot-Response.jpg"
+          imgAlt="current issue image"
+          imgWidth={1600}
+          imgHeight={1200}
+          imgClassName="catsbs-content"
+          header="Jajarkot Is Rebuilding"
+          headerClassName="h2"
+          paragraph="We can all agree that time has flown and a lot has been
+              accomplished and now is the time for action. VCN has done so much
+              and our work continues in so many sections and sectors and we have
+              been vigilant in rebuilding Jajarkot to the best it can be. Here are some glimpses of our work for you to enjoy."
+          paragraphClassName="paragraph1 black-text-100"
+          hasButton={true}
+          buttonText="LEARN MORE"
+          buttonClassName="arrow-out-button"
+        />
         <DestructedBackgroundSVGComp
           className="cta-catsbs-background"
           preserveAspectRatio="none"

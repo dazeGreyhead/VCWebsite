@@ -47,20 +47,26 @@
 .catsbs-container {
   display: flex;
   justify-content: center;
-  gap: 96px;
+  gap: 80px;
   width: 80%;
   height: 470px;
 }
 
 .catsbs-content-container {
   width: 55%;
+  object-fit: cover;
 }
 
 .catsbs-content {
-  
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+.catsbs-header-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .catsbs-text-container {
@@ -68,7 +74,6 @@
   flex-direction: column;
   gap: 24px;
   width: 45%;
-
 }
 
 .catsbs-paragraph-button-container {
@@ -80,4 +85,52 @@
 
 .catsbs-paragraph-container p {
   margin-bottom: 24px;
+}
+
+.video-content-play-button {
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  height: 40%;
+  fill: $swed-yellow;
+  opacity: 0.75;
+}
+
+.video-content-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-content {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.vcn-stats-container {
+  @include flexCenter(row);
+  padding: 20px 24px;
+  border: 2px solid $cyan;
+  border-radius: 10px;
+  gap: 15%;
+
+  .icon-container {
+    @include flexCenter(row);
+    height: 100px;
+    width: 100px;
+  }
+
+  .text-container {
+    @include flexCenter(column);
+    gap: 16px;
+    
+
+    .wrap {
+      overflow-wrap: break-word;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
 }

@@ -1,7 +1,9 @@
 @use '../scss/variables' as *;
 @use '../scss/mixins' as *;
 @use '../scss/functions' as *;
+@use '../scss/globals.scss' as *;
 
+//----------------Hero Section-----------------
 .hero-section {
   width: 100%;
   position: relative;
@@ -35,6 +37,7 @@
   filter: brightness(60%);
 }
 
+// ---------- Call to action section --------------
 .call-to-action {
   z-index: 1;
   display: flex;
@@ -112,10 +115,207 @@
 .programmatic-approaches-diagram {
   width: 95%;
   height: 95%;
-  margin-top: -30px;
+  margin-top: -40px;
   text-align: center;
 }
 
 .programmatic-approaches-diagram-container {
   @include flexCenter(column);
+}
+
+//........Who We Are Section...........
+
+.who-we-are-main-container {
+  position: relative;
+  height: 730px;
+  width: 100%;
+  display: flex;
+  z-index: 2;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.who-we-are-main-text-background {
+  position: absolute;
+  z-index: -1;
+  top: 195px;
+  width: 101%;
+  height: 70%;
+  fill: $kharani-yellow;
+}
+
+.who-we-are-paragraph {
+  font-family: $font-paragraph;
+  font-size: $paragraph-p1;
+  line-height: 155%;
+  font-weight: paraWeight(regular);
+  color: $swed-black-100;
+  text-align: justify;
+}
+
+.who-we-are-main-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 45px;
+  width: 40%;
+}
+
+.who-we-are-main-content {
+  margin-top: -120px;
+}
+
+.who-we-are-secondrow-container {
+  @extend .who-we-are-main-container;
+  height: 590px;
+}
+
+.who-we-are-secondrow-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.who-we-are-secondrow-content-container {
+  width: 50%;
+}
+
+.who-we-are-secondrow-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  width: 50%;
+}
+
+.who-we-are-secondrow-paragraph {
+  @extend .who-we-are-paragraph;
+  color: $swed-black-75;
+}
+
+.who-we-are-secondrow-catsbs-container {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  width: 80%;
+  height: 437px;
+}
+
+.who-we-are-thirdrow-container {
+  @extend .who-we-are-main-container;
+  height: 694px;
+}
+
+
+.who-we-are-thirdrow-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  width: 35%;
+}
+
+.who-we-are-thirdrow-content-container {
+  width: 65%;
+  display: flex;
+  align-items: center;
+}
+
+.who-we-are-thirdrow-background {
+  position: absolute;
+  z-index: -1;
+  top: -5px;
+  width: 130%;
+  height: 100%;
+  fill: $swed-black-10;
+}
+
+.our-impact-container {
+  width: 90%;
+
+  .stats-and-map-container {
+    display: flex;
+    gap: 90px;
+
+    .stats-and-button {
+      width: 45%;
+      .stats-container {
+          margin-top: 60px;
+          
+          height: 552px;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 24px; }
+    }
+
+    
+    .impact-map-container {
+      width: 55%;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+      
+      .impact-map {
+        margin-left: 15%;
+        margin-top: -60px;
+      }
+
+      .map-stats-legend-container{
+        display: flex;
+        justify-content: space-between;
+
+        .map-stats {
+          border-collapse: collapse;
+          height: 271px;
+          th, td {
+            font-family: $font-heading;
+            font-size: $heading-h6;
+            font-weight: bold;
+            border: 1px solid $swed-blue;
+            color: $swed-blue;
+            border-collapse: separate;
+          }
+
+          th {
+            width: 250px;
+            height: 33px;
+            text-align: left;
+            padding-left: 12px;
+          }
+          td {
+            width: 86px;
+            height: 33px;
+            text-align: center;
+            
+          }
+        }
+
+        .map-legend {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          row-gap: 8px;
+
+          .legend-elements {
+            display: flex;
+            gap: 24px;
+
+            .color-swatch {
+              display: inline-block;
+              width: 30px;
+              height: 20px;
+            }
+            
+            .name {
+              // color: $swed-black-100;
+            }
+            
+          }
+        }
+      }
+    }
+  }
+}
+
+.our-impact-icons {
+  fill: $cyan;
 }

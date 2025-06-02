@@ -46,6 +46,10 @@ li {
   @include flexCenter(row);
 }
 
+.header-logo {
+  @include flexCenter(row);
+}
+
 // ----------------Sidebar Stuffs----------------
 .sidebar-cards-container {
   display: grid;

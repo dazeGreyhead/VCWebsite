@@ -1,35 +1,88 @@
 import Image from "next/image";
 import React from "react";
+import { ContentAndTextSBSType } from "../utils/types";
+import TitleLine from "./TitleLine";
+import VideoContent from "./videoContent";
 
-export default function ContentAndTextSBS() {
-  return (
-    <section className="catsbs-container">
-      <div className="catsbs-content-container">
+export default function ContentAndTextSBS({
+  catsbsContainerClassName,
+  contentType,
+  contentDirection,
+  contentContainerClassname,
+  hasButton,
+  hasTitleLine,
+  titleLineColor,
+  src,
+  imgAlt,
+  imgHeight,
+  imgWidth,
+  imgClassName,
+  videoClassName,
+  header,
+  paragraph,
+  headerClassName,
+  paragraphClassName,
+  textContainerClassname,
+  buttonText,
+  buttonClassName,
+  buttonOnclick,
+}: ContentAndTextSBSType) {
+  const orderedElements = [
+    <div
+      key={"1"}
+      className={
+        contentContainerClassname
+          ? contentContainerClassname
+          : "catsbs-content-container"
+      }
+    >
+      {contentType === "image" ? (
         <Image
-          src="/Jajarkot-Response.jpg"
-          alt="current issue image"
-          width={1600}
-          height={1200}
-          className="catsbs-content"
+          src={src}
+          alt={imgAlt ? imgAlt : ""}
+          width={imgWidth}
+          height={imgHeight}
+          className={imgClassName}
         />
+      ) : (
+        <VideoContent
+          videoClassName={videoClassName ? videoClassName : ""}
+          videoSrc={src}
+        />
+      )}
+    </div>,
+    <div
+      key={"2"}
+      className={
+        textContainerClassname
+          ? textContainerClassname
+          : "catsbs-text-container"
+      }
+    >
+      <div className="catsbs-header-container">
+        <h2 className={headerClassName}>{header}</h2>
+        {hasTitleLine && (
+          <TitleLine color={titleLineColor ? titleLineColor : "swed-yellow"} />
+        )}
       </div>
-      <div className="catsbs-text-container">
-        <h2 className="h2">Jajarkot Is Rebuilding</h2>
-        <div className="catsbs-paragraph-button-container">
-          <div className="catsbs-paragraph-container">
-            <p className="paragraph1 black-text-100">
-              We can all agree that time has flown and a lot has been
-              accomplished and now is the time for action. VCN has done so much
-              and our work continues in so many sections and sectors and we have
-              been vigilant in rebuilding Jajarkot to the best it can be.
-            </p>
-            <p className="paragraph1 black-text-100">
-              Here are some glimpses of our work for you to enjoy.
-            </p>
-          </div>
-          <button className="arrow-out-button">LEARN MORE</button>
+      <div className="catsbs-paragraph-button-container">
+        <div className="catsbs-paragraph-container">
+          <p className={paragraphClassName}>{paragraph}</p>
         </div>
+        {hasButton && <button className={buttonClassName}>{buttonText}</button>}
       </div>
+    </div>,
+  ];
+
+  return (
+    <section
+      className={
+        catsbsContainerClassName ? catsbsContainerClassName : "catsbs-container"
+      }
+    >
+      {contentDirection === "left"
+        ? orderedElements
+        : orderedElements.reverse()}
     </section>
   );
 }

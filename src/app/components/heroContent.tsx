@@ -46,13 +46,16 @@ export default function HeroContent({
       setRemoveImageSlider(true);
     }
 
-    if (videoRef.current) {
-      if (playVideo) {
-        videoRef.current.play();
-      } else {
-        videoRef.current.pause();
+    async function playOrPause() {
+      if (videoRef.current) {
+        if (playVideo) {
+          await videoRef.current.play();
+        } else {
+          videoRef.current.pause();
+        }
       }
     }
+    playOrPause();
   }, [playVideo]);
 
   return (

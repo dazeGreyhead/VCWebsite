@@ -22,11 +22,11 @@ export default function PlayButton({
         width="173"
         height="173"
         viewBox="0 0 173 173"
-        fill="none"
+        className={className}
         xmlns="http://www.w3.org/2000/svg"
         onClick={onClick}
       >
-        <g className={className}>
+        <g>
           <SVGMorph paths={[tri1, rect1, tri1]} playVideo={playVideo} />
           <SVGMorph paths={[tri2, rect2, tri2]} playVideo={playVideo} />
         </g>

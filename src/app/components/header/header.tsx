@@ -127,6 +127,7 @@ export default function Header() {
                     width={192}
                     height={80}
                     alt="Volunteer Corps Logo"
+                    className="header-logo"
                   />
                 </Link>
               </li>

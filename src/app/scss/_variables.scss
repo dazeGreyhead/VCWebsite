@@ -13,10 +13,13 @@ $paragraph-p2: 1.13rem;
 $paragraph-small: 0.9rem;
 $paragraph-numbers: 2.2rem;
 $paragraph-stats: 1.13rem;
+$paragraph-stats-numbers: 2rem;
 
 $paragraph-font-weights: (
-  'regular': 300,
+  'regular': 400,
   'light': 200,
+  'almost-light': 300,
+  'semi-bold': 600,
 );
 
 $font-heading: var(--font-heading);

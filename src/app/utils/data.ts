@@ -1,4 +1,10 @@
-import { SidebarLinksType } from "./types";
+import DevelopmentProjectsIconSVG from "../components/svgComponents/DevelopmentProjectsIconSVG";
+import DisastersRespondedIconSVG from "../components/svgComponents/DisastersRespondedIconSVG";
+import HouseholdIconSVG from "../components/svgComponents/HouseholdIconSVG";
+import IndividualsIconSVG from "../components/svgComponents/IndividualsIconSVG";
+import RescuedIconSVG from "../components/svgComponents/RescuedIconSVG";
+import TotalVolunteersIconSVG from "../components/svgComponents/TotalVolunteersIconSVG";
+import { SidebarLinksType, VcnStatsType } from "./types";
 
 // This is the all encompassing nested sidebar menu and submenu data.
 export const sidebarLinks: SidebarLinksType[] = [
@@ -110,5 +116,40 @@ export const sidebarLinks: SidebarLinksType[] = [
         link: "./vacancy",
       },
     ],
+  },
+];
+
+
+// Data of the primary stats of vcn in our impact.
+export const vcnPrimaryStats: VcnStatsType[] = [
+  {
+    icon: HouseholdIconSVG,
+    number: 19299,
+    descriptor: "HOUSEHOLDS SUPPORTED",
+  },
+  {
+    icon: IndividualsIconSVG,
+    number: 101869,
+    descriptor: "Individuals REACHED",
+  },
+  {
+    icon: DisastersRespondedIconSVG,
+    number: 45,
+    descriptor: "DISASTERS RESPONDED",
+  },
+  {
+    icon: DevelopmentProjectsIconSVG,
+    number: 76,
+    descriptor: "DEVELOPMENT PROJECTS",
+  },
+  {
+    icon: RescuedIconSVG,
+    number: 297,
+    descriptor: "RESCUED",
+  },
+  {
+    icon: TotalVolunteersIconSVG,
+    number: 8000,
+    descriptor: "TOTAL VOLUNTEERS",
   },
 ];

@@ -19,3 +19,33 @@ export type SidebarCardDataType = {
   label: string;
   sidebarCardData: SidebarLinksType[];
 };
+
+export type ContentAndTextSBSType = {
+  catsbsContainerClassName?: string;
+  contentType: 'image' | 'video';
+  contentDirection: 'left' | 'right';
+  contentContainerClassname?: string;
+  hasTitleLine: boolean;
+  titleLineColor?: "swed-blue" | "swed-yellow" | "vcn-red";
+  src: string;
+  imgAlt?: string;
+  imgHeight?: number;
+  imgWidth?: number;
+  imgClassName?: string;
+  videoClassName?: string;
+  header: string;
+  paragraph: string;
+  headerClassName?: string;
+  paragraphClassName?: string;
+  textContainerClassname?: string;
+  hasButton: boolean;
+  buttonText?: string;
+  buttonClassName?: string;
+  buttonOnclick?: () => void;
+}
+
+export type VcnStatsType = {
+  icon: (props: React.SVGProps<SVGSVGElement>) => React.JSX.Element;
+  number: number;
+  descriptor: string;
+};
